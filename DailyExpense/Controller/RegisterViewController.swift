@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  DailyExpense
 //
 //  Created by Long Nguyễn on 18/01/2021.
@@ -7,13 +7,12 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
-    
+class RegisterViewController: UIViewController {
     // MARK: - Variables
     
-    let welcomeLabel = UILabel(text: "Welcome!", font: .boldSystemFont(ofSize: 34))
+    let welcomeLabel = UILabel(text: "Create Account", font: .boldSystemFont(ofSize: 34))
     
-    let signInLabel = UILabel(text: "Sign in to continue\nGet your money under control", font: .boldSystemFont(ofSize: 17), numberOfLines: 2, color: #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5568627451, alpha: 1))
+    let signInLabel = UILabel(text: "Sign up to get started!\n", font: .boldSystemFont(ofSize: 17), numberOfLines: 2, color: #colorLiteral(red: 0.5411764706, green: 0.5411764706, blue: 0.5568627451, alpha: 1))
     
     let emailTextField = UITextField(placeholder: "Email", font: .systemFont(ofSize: 17))
     
@@ -36,25 +35,18 @@ class LoginViewController: UIViewController {
         return line
     }()
 
+    let usernameTextField = UITextField(placeholder: "Username", font: .systemFont(ofSize: 17))
     
-    let forgotPasswordButton = UIButton(title: "Forgor Password?", textColor: #colorLiteral(red: 1, green: 0.6666666667, blue: 0.7450980392, alpha: 1))
-    
-    let signInButton = UIButton(title: "Sign In", color: #colorLiteral(red: 1, green: 0.5137254902, blue: 0.6274509804, alpha: 1), radius: 20, textColor: .white)
-    
-    let createAccountButton: UIButton = {
-        let label = UIButton(type: .system)
+    let usernameSeparateLine: UIView = {
+        let line = UIView()
         
-        label.titleLabel?.font = .boldSystemFont(ofSize: 17)
+        line.backgroundColor = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         
-        let text = NSMutableAttributedString()
-        text.append(NSAttributedString(string: "Don't have an account?", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.7803921569, green: 0.7803921569, blue: 0.8039215686, alpha: 1)]));
-        text.append(NSAttributedString(string: " Create Account", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1, green: 0.5137254902, blue: 0.6274509804, alpha: 1)]))
-        label.setAttributedTitle(text, for: .normal)
-        
-        
-        return label
+        return line
     }()
     
+    let signInButton = UIButton(title: "Sign In", color: #colorLiteral(red: 1, green: 0.5137254902, blue: 0.6274509804, alpha: 1), radius: 20, textColor: .white)
+
     // MARK: - Override
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +57,6 @@ class LoginViewController: UIViewController {
         setUpInputTextField()
         setUpSignInButton()
         
-        createAccountButton.addTarget(self, action: #selector(changeToSignUp), for: .touchUpInside)
     }
     
     // MARK: - Set up Handle
@@ -90,18 +81,28 @@ class LoginViewController: UIViewController {
         
         signInLabel.anchor(top: welcomeLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: 16, bottom: 0, right: 16))
         signInLabel.constrainHeight(constant: 44)
+        signInLabel.textAlignment = .justified
     }
     
     func setUpInputTextField() {
+        
+        view.addSubview(usernameTextField)
+        view.addSubview(usernameSeparateLine)
+        
         view.addSubview(emailTextField)
         view.addSubview(emailSeparateLine)
         view.addSubview(passwordTextField)
         view.addSubview(passwordSeparateLine)
-        view.addSubview(forgotPasswordButton)
         
-        emailTextField.anchor(top: signInLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 50, left: 16, bottom: 0, right: 16))
+        usernameTextField.anchor(top: signInLabel.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor,padding: .init(top: 50, left: 16, bottom: 0, right: 16))
+        usernameTextField.constrainHeight(constant: 60)
+        
+        
+        usernameSeparateLine.constrainHeight(constant: 1)
+        usernameSeparateLine.anchor(top: usernameTextField.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
+        
+        emailTextField.anchor(top: usernameSeparateLine.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         emailTextField.constrainHeight(constant: 60)
-        
         
         emailSeparateLine.constrainHeight(constant: 1)
         emailSeparateLine.anchor(top: emailTextField.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
@@ -113,26 +114,14 @@ class LoginViewController: UIViewController {
         passwordSeparateLine.anchor(top: passwordTextField.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         
         
-        forgotPasswordButton.titleLabel?.font = forgotPasswordButton.titleLabel?.font.boldItalic
-        forgotPasswordButton.anchor(top: passwordSeparateLine.bottomAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 16, left: 0, bottom: 0, right: 16))
-        
-        forgotPasswordButton.constrainHeight(constant: 20)
-        
     }
     
     func setUpSignInButton() {
-        view.addSubview(createAccountButton)
         view.addSubview(signInButton)
-        
-        createAccountButton.centerXInSuperview()
-        createAccountButton.anchor(top: nil, leading: nil, bottom: view.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 60, right: 0))
         
         signInButton.titleLabel?.font = .boldSystemFont(ofSize: 17)
         signInButton.centerXInSuperview()
-        signInButton.anchor(top: nil, leading: view.leadingAnchor, bottom: createAccountButton.topAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 32, right: 16))
+        signInButton.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 109, right: 16))
         signInButton.constrainHeight(constant: 50)
     }
-    
 }
-
-

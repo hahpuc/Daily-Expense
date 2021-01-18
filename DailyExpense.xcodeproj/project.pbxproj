@@ -14,6 +14,7 @@
 		41BD037225B55BE100AC0215 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD037125B55BE100AC0215 /* LoginViewController.swift */; };
 		41BD037625B55C8300AC0215 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD037525B55C8300AC0215 /* UIView+Layout.swift */; };
 		41BD037925B55C9D00AC0215 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD037825B55C9D00AC0215 /* Extension.swift */; };
+		41BD038F25B586F000AC0215 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD038E25B586F000AC0215 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		41BD037125B55BE100AC0215 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		41BD037525B55C8300AC0215 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		41BD037825B55C9D00AC0215 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		41BD038E25B586F000AC0215 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				41BD037125B55BE100AC0215 /* LoginViewController.swift */,
+				41BD038E25B586F000AC0215 /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				41BD037925B55C9D00AC0215 /* Extension.swift in Sources */,
 				41BD037625B55C8300AC0215 /* UIView+Layout.swift in Sources */,
 				41BD037225B55BE100AC0215 /* LoginViewController.swift in Sources */,
+				41BD038F25B586F000AC0215 /* RegisterViewController.swift in Sources */,
 				41BD035425B55A6B00AC0215 /* AppDelegate.swift in Sources */,
 				41BD035625B55A6B00AC0215 /* SceneDelegate.swift in Sources */,
 			);
