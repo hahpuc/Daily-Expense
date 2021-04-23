@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class LoginViewController: UIViewController {
     
@@ -65,18 +66,63 @@ class LoginViewController: UIViewController {
         setUpInputTextField()
         setUpSignInButton()
         
-        createAccountButton.addTarget(self, action: #selector(changeToSignUp), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
+    
     }
     
     // MARK: - Set up Handle
     
     @objc func changeToSignUp() {
-        print("Change to sign up")
+          print("Change to sign up")
+          
+          let registerVC = RegisterViewController()
+          registerVC.modalTransitionStyle = .coverVertical
+          
+          self.present(registerVC, animated: true, completion: nil)
         
-        let registerVC = RegisterViewController()
-        registerVC.modalTransitionStyle = .coverVertical
+    }
+    
+    @objc func handleSignIn() {
+        print("Handle SignIn")
         
-        self.present(registerVC, animated: true, completion: nil)
+        let urlString =  "http://nbdvn.com/api/v1/login"
+        
+        let parameters = [
+            "phone": "\(emailTextField.text ?? "" )",
+            "password": "\(passwordTextField.text ?? "")"
+        ]
+        
+        AF.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: nil)
+             .validate()
+             .responseJSON { (responseData) in
+            
+            switch responseData.result {
+                case.success:
+//                    print(responseData.value)
+                    
+                    guard let data = responseData.data else {return}
+
+                    do {
+                        let object = try JSONDecoder().decode(LoginInInfo.self, from: data)
+                        
+                        let registerVC = HomeViewController()
+                        registerVC.label.text = object.message
+                        registerVC.modalTransitionStyle = .coverVertical
+                        
+                        self.present(registerVC, animated: true, completion: nil)
+                        
+                        print(object)
+                    } catch let err{
+                        print("1",err)
+                    }
+                case let .failure(error):
+                    print("2", error)
+                
+            }
+            
+            
+        }
+
     }
     
     // MARK: - Set up Component

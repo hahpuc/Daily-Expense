@@ -57,9 +57,17 @@ class RegisterViewController: UIViewController {
         setUpInputTextField()
         setUpSignInButton()
         
+        signInButton.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
+        
     }
     
     // MARK: - Set up Handle
+    
+    @objc func handleSignIn() {
+        print("Sign in")
+        
+        
+    }
     
     @objc func changeToSignUp() {
         print("Change to sign up")
