@@ -29,6 +29,12 @@ extension UIImageView {
     }
 }
 
+extension UIView  {
+    convenience init(backgroundColor: UIColor) {
+        self.init(frame: .zero)
+        self.backgroundColor = backgroundColor
+    }
+}
 
 extension UIButton {
     convenience init(title: String, color: UIColor = .white, radius: Int = 0, textColor: UIColor = .black ) {
@@ -73,3 +79,4 @@ extension UIFont {
     return UIFont(descriptor: descriptor, size: 0)
   } // with(traits:)
 } // extension
+

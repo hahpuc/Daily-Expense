@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
     @objc func handleSignIn() {
         print("Handle SignIn")
         
-        let urlString =  "http://nbdvn.com/api/v1/login"
+        let urlString =  "https://stag-pernodricard.fractal.vn/api/v1/login"
         
         let parameters = [
             "phone": "\(emailTextField.text ?? "" )",
@@ -108,12 +108,15 @@ class LoginViewController: UIViewController {
                         let registerVC = HomeViewController()
                         registerVC.label.text = object.message
                         registerVC.modalTransitionStyle = .coverVertical
+                        registerVC.username = object.profileData.profile.name
                         
                         self.present(registerVC, animated: true, completion: nil)
                         
-                        print(object)
-                    } catch let err{
-                        print("1",err)
+                        print(object.profileData.token)
+                    } catch {
+                        let alert = UIAlertController(title: "Error", message: "Don't have any Data", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                     }
                 case let .failure(error):
                     print("2", error)
@@ -152,6 +155,7 @@ class LoginViewController: UIViewController {
         emailSeparateLine.constrainHeight(constant: 1)
         emailSeparateLine.anchor(top: emailTextField.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         
+        passwordTextField.isSecureTextEntry = true
         passwordTextField.anchor(top: emailSeparateLine.bottomAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 0, right: 16))
         passwordTextField.constrainHeight(constant: 60)
         
