@@ -17,6 +17,7 @@
 		41BD037625B55C8300AC0215 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD037525B55C8300AC0215 /* UIView+Layout.swift */; };
 		41BD037925B55C9D00AC0215 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD037825B55C9D00AC0215 /* Extension.swift */; };
 		41BD038F25B586F000AC0215 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD038E25B586F000AC0215 /* RegisterViewController.swift */; };
+		41C5CA73263557460038F14E /* InfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C5CA72263557460038F14E /* InfoRequest.swift */; };
 		BDDD132510FA922C309FF818 /* Pods_DailyExpense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E85EA47047F2E6B8421344 /* Pods_DailyExpense.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		41BD037525B55C8300AC0215 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		41BD037825B55C9D00AC0215 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		41BD038E25B586F000AC0215 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		41C5CA72263557460038F14E /* InfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRequest.swift; sourceTree = "<group>"; };
 		61DA3A570C550701097BB3B3 /* Pods-DailyExpense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyExpense.release.xcconfig"; path = "Target Support Files/Pods-DailyExpense/Pods-DailyExpense.release.xcconfig"; sourceTree = "<group>"; };
 		D3E85EA47047F2E6B8421344 /* Pods_DailyExpense.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyExpense.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEE25E7FCF322B90EE50E296 /* Pods-DailyExpense.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyExpense.debug.xcconfig"; path = "Target Support Files/Pods-DailyExpense/Pods-DailyExpense.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				414E43DB26328DBC005A4BF2 /* LoginInInfo.swift */,
+				41C5CA72263557460038F14E /* InfoRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41BD037925B55C9D00AC0215 /* Extension.swift in Sources */,
+				41C5CA73263557460038F14E /* InfoRequest.swift in Sources */,
 				41BD037625B55C8300AC0215 /* UIView+Layout.swift in Sources */,
 				41BD037225B55BE100AC0215 /* LoginViewController.swift in Sources */,
 				414E43E226329F72005A4BF2 /* HomeViewController.swift in Sources */,

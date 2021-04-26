@@ -23,6 +23,7 @@ extension UIImageView {
         self.init(image: nil)
         
         self.layer.cornerRadius = cornerRadius
+        self.backgroundColor = UIColor.red
         
         self.clipsToBounds = true
         self.contentMode = .scaleAspectFill

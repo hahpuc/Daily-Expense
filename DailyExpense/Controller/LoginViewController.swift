@@ -109,10 +109,10 @@ class LoginViewController: UIViewController {
                         registerVC.label.text = object.message
                         registerVC.modalTransitionStyle = .coverVertical
                         registerVC.username = object.profileData.profile.name
+                        registerVC.accessToken = object.profileData.token
                         
                         self.present(registerVC, animated: true, completion: nil)
-                        
-                        print(object.profileData.token)
+
                     } catch {
                         let alert = UIAlertController(title: "Error", message: "Don't have any Data", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
