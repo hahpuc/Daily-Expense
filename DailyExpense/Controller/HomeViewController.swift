@@ -106,9 +106,7 @@ class HomeViewController: UIViewController {
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(accessToken!)",
-//            "Content-type": "multipart/form-data"
             "Accept": "application/json"
-
         ]
         
         if let imageData = selectedImage?.pngData() {
@@ -117,12 +115,35 @@ class HomeViewController: UIViewController {
             
             AF.upload(multipartFormData: { (multipartFromData) in
                 for (key, value) in parameters {
-                    multipartFromData.append((value ).data(using: .utf8)!, withName: key)
+                    multipartFromData.append(value.data(using: .utf8)!, withName: key)
                }
-                multipartFromData.append(imageData, withName: "file", fileName: self.imageURL?.absoluteString, mimeType: "image/png")
+                multipartFromData.append(imageData, withName: "img", fileName: self.imageURL?.absoluteString, mimeType: "image/png")
                
             }, to: urlString, method: .post, headers: headers).responseJSON { (response) in
-                print(response)
+                switch response.result {
+                    case.success:
+                        print(response)
+                        
+                        guard let data = response.data else {return}
+
+                        do {
+                            let object = try JSONDecoder().decode(InfoRequest.self, from: data)
+                            
+                            let alert = UIAlertController(title: "Thông báo", message: object.message, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            
+                        } catch {
+                            let alert = UIAlertController(title: "Error", message: "Thất bại upload hình", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    
+                        
+                    case let .failure(error):
+                        print("2", error)
+                    
+                }
             }
         }
     }
