@@ -36,7 +36,6 @@ class LoginViewController: UIViewController {
         
         return line
     }()
-
     
     let forgotPasswordButton = UIButton(title: "Forgor Password?", textColor: #colorLiteral(red: 1, green: 0.6666666667, blue: 0.7450980392, alpha: 1))
     
@@ -62,26 +61,23 @@ class LoginViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        setUpTitleLabel()
-        setUpInputTextField()
-        setUpSignInButton()
+        setUpLayout()
         
         signInButton.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
-    
-    }
-    
-    // MARK: - Set up Handle
-    
-    @objc func changeToSignUp() {
-          print("Change to sign up")
-          
-          let registerVC = RegisterViewController()
-          registerVC.modalTransitionStyle = .coverVertical
-          
-          self.present(registerVC, animated: true, completion: nil)
         
     }
     
+    @objc func changeToSignUp() {
+        print("Change to sign up")
+        
+        let registerVC = RegisterViewController()
+        registerVC.modalTransitionStyle = .coverVertical
+        
+        self.present(registerVC, animated: true, completion: nil)
+        
+    }
+    
+    // MARK: - Set up SignIn
     @objc func handleSignIn() {
         print("Handle SignIn")
         
@@ -93,15 +89,13 @@ class LoginViewController: UIViewController {
         ]
         
         AF.request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString, headers: nil)
-             .validate()
-             .responseJSON { (responseData) in
-            
-            switch responseData.result {
-                case.success:
-//                    print(responseData.value)
-                    
+            .validate()
+            .responseJSON { (responseData) in
+                
+                switch responseData.result {
+                case .success:
                     guard let data = responseData.data else {return}
-
+                    
                     do {
                         let object = try JSONDecoder().decode(LoginInInfo.self, from: data)
                         
@@ -112,7 +106,7 @@ class LoginViewController: UIViewController {
                         registerVC.accessToken = object.profileData.token
                         
                         self.present(registerVC, animated: true, completion: nil)
-
+                        
                     } catch {
                         let alert = UIAlertController(title: "Error", message: "Don't have any Data", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
@@ -120,15 +114,20 @@ class LoginViewController: UIViewController {
                     }
                 case let .failure(error):
                     print("2", error)
+                    
+                }
+                
                 
             }
-            
-            
-        }
-
+        
     }
     
-    // MARK: - Set up Component
+    // MARK: - Set up layout
+    fileprivate func setUpLayout() {
+        setUpTitleLabel()
+        setUpInputTextField()
+        setUpSignInButton()
+    }
     
     func setUpTitleLabel() {
         view.addSubview(welcomeLabel)

@@ -10,6 +10,7 @@ import Alamofire
  
 class HomeViewController: UIViewController {
     
+    // MARK: - Declare Variable
     var username: String?
     
     var accessToken: String?
@@ -44,6 +45,7 @@ class HomeViewController: UIViewController {
         setUpAction()
     }
     
+    // MARK: - Layout
     func setUpLayout() {
         
         view.addSubview(label)
@@ -86,15 +88,11 @@ class HomeViewController: UIViewController {
         changePasswordButton.addTarget(self, action: #selector(handleChangePassword), for: .touchUpInside)
         
         chooseImageButton.addTarget(self, action: #selector(handleChoosePicture), for: .touchUpInside)
-        
+         
         uploadImageButton.addTarget(self , action: #selector(handleUploadImage), for: .touchUpInside)
     }
-    
-    func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
+
+    // MARK: - Upload Image
     @objc func handleUploadImage() {
         print("Upload Image")
         
@@ -110,8 +108,6 @@ class HomeViewController: UIViewController {
         ]
         
         if let imageData = selectedImage?.pngData() {
-            let filename = getDocumentsDirectory().appendingPathComponent(imageURL?.absoluteString ?? "")
-            try? imageData.write(to: filename)
             
             AF.upload(multipartFormData: { (multipartFromData) in
                 for (key, value) in parameters {
@@ -148,16 +144,13 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func upload(image: Data, to url: Alamofire.URLRequestConvertible, params: [String: Any], header: HTTPHeaders) {
-        
-    }
-    
     @objc func handleChoosePicture() {
         print("Choose Image")
         
         showImagePicker()
     }
     
+    // MARK: - Change Password
     @objc func handleChangePassword() {
         print("Change Pass")
             
@@ -203,6 +196,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - Extension
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func showImagePicker() {
         let imagePickerController = UIImagePickerController()
@@ -227,8 +221,8 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
             imageURL = (info[UIImagePickerController.InfoKey.imageURL] as! NSURL)
         }
         
-        print(selectedImage)
-        print(imageURL)
+        print(selectedImage as Any)
+        print(imageURL as Any)
         
         dismiss(animated: true, completion: nil)
     }
