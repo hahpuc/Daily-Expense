@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		414E43DC26328DBC005A4BF2 /* LoginInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E43DB26328DBC005A4BF2 /* LoginInInfo.swift */; };
 		414E43E226329F72005A4BF2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414E43E126329F72005A4BF2 /* HomeViewController.swift */; };
+		419020002637EF0700547201 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41901FFF2637EF0700547201 /* Main.storyboard */; };
+		419020062637F29E00547201 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419020052637F29E00547201 /* LoginScreen.swift */; };
+		419020092637F3AC00547201 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419020082637F3AC00547201 /* HomeScreen.swift */; };
+		419020102637F85400547201 /* ChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190200F2637F85400547201 /* ChangePassword.swift */; };
+		419020132637F85C00547201 /* UploadImageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419020122637F85C00547201 /* UploadImageScreen.swift */; };
 		41BD035425B55A6B00AC0215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD035325B55A6B00AC0215 /* AppDelegate.swift */; };
 		41BD035625B55A6B00AC0215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BD035525B55A6B00AC0215 /* SceneDelegate.swift */; };
 		41BD035D25B55A7000AC0215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41BD035C25B55A7000AC0215 /* Assets.xcassets */; };
@@ -24,6 +29,11 @@
 /* Begin PBXFileReference section */
 		414E43DB26328DBC005A4BF2 /* LoginInInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInInfo.swift; sourceTree = "<group>"; };
 		414E43E126329F72005A4BF2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		41901FFF2637EF0700547201 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		419020052637F29E00547201 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		419020082637F3AC00547201 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		4190200F2637F85400547201 /* ChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassword.swift; sourceTree = "<group>"; };
+		419020122637F85C00547201 /* UploadImageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageScreen.swift; sourceTree = "<group>"; };
 		41BD035025B55A6B00AC0215 /* DailyExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41BD035325B55A6B00AC0215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41BD035525B55A6B00AC0215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +80,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		419020022637F26100547201 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				41901FFF2637EF0700547201 /* Main.storyboard */,
+				419020052637F29E00547201 /* LoginScreen.swift */,
+				419020082637F3AC00547201 /* HomeScreen.swift */,
+				4190200F2637F85400547201 /* ChangePassword.swift */,
+				419020122637F85C00547201 /* UploadImageScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
 		41BD034725B55A6B00AC0215 = {
 			isa = PBXGroup;
 			children = (
@@ -94,7 +116,8 @@
 				41BD036E25B55BA200AC0215 /* Delegate */,
 				41BD037425B55C5500AC0215 /* Helper */,
 				414E43DA26328DA9005A4BF2 /* Model */,
-				41BD036F25B55BB700AC0215 /* Controller */,
+				41BD036F25B55BB700AC0215 /* Controller-WithoutSB */,
+				419020022637F26100547201 /* Screen */,
 				41BD035C25B55A7000AC0215 /* Assets.xcassets */,
 				41BD035E25B55A7000AC0215 /* LaunchScreen.storyboard */,
 				41BD036125B55A7000AC0215 /* Info.plist */,
@@ -111,14 +134,14 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		41BD036F25B55BB700AC0215 /* Controller */ = {
+		41BD036F25B55BB700AC0215 /* Controller-WithoutSB */ = {
 			isa = PBXGroup;
 			children = (
 				41BD037125B55BE100AC0215 /* LoginViewController.swift */,
 				41BD038E25B586F000AC0215 /* RegisterViewController.swift */,
 				414E43E126329F72005A4BF2 /* HomeViewController.swift */,
 			);
-			path = Controller;
+			path = "Controller-WithoutSB";
 			sourceTree = "<group>";
 		};
 		41BD037425B55C5500AC0215 /* Helper */ = {
@@ -197,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419020002637EF0700547201 /* Main.storyboard in Resources */,
 				41BD036025B55A7000AC0215 /* LaunchScreen.storyboard in Resources */,
 				41BD035D25B55A7000AC0215 /* Assets.xcassets in Resources */,
 			);
@@ -255,11 +279,15 @@
 				41C5CA73263557460038F14E /* InfoRequest.swift in Sources */,
 				41BD037625B55C8300AC0215 /* UIView+Layout.swift in Sources */,
 				41BD037225B55BE100AC0215 /* LoginViewController.swift in Sources */,
+				419020102637F85400547201 /* ChangePassword.swift in Sources */,
+				419020092637F3AC00547201 /* HomeScreen.swift in Sources */,
+				419020132637F85C00547201 /* UploadImageScreen.swift in Sources */,
 				414E43E226329F72005A4BF2 /* HomeViewController.swift in Sources */,
 				41BD038F25B586F000AC0215 /* RegisterViewController.swift in Sources */,
 				41BD035425B55A6B00AC0215 /* AppDelegate.swift in Sources */,
 				41BD035625B55A6B00AC0215 /* SceneDelegate.swift in Sources */,
 				414E43DC26328DBC005A4BF2 /* LoginInInfo.swift in Sources */,
+				419020062637F29E00547201 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
