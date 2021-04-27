@@ -82,6 +82,7 @@
                         <outlet property="loginButton" destination="GZ9-zd-K4l" id="g0n-eo-kZf"/>
                         <outlet property="passwordTextField" destination="yVj-HK-lrt" id="HeP-Na-h6n"/>
                         <outlet property="phoneTextField" destination="VzT-2N-2dm" id="4Ao-sJ-EjE"/>
+                        <segue destination="RlU-NO-1Ea" kind="show" identifier="homeSegue" id="1Rk-3O-qFj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80E-DB-8UP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

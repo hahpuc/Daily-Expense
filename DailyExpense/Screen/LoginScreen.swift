@@ -13,6 +13,8 @@ class LoginScreen: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    var accessToken: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -26,6 +28,14 @@ class LoginScreen: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is HomeScreen {
+            let vc = segue.destination as? HomeScreen
+            
+            vc?.accessToken = self.accessToken!
+        }
     }
     
     @IBAction func handleLogin(_ sender: Any) {
@@ -50,13 +60,9 @@ class LoginScreen: UIViewController {
                         let object = try JSONDecoder().decode(LoginInInfo.self, from: data)
                         print(object)
                         
-                        let homeController = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! HomeScreen
+                        self.accessToken = object.profileData.token
                         
-                        homeController.accessToken = object.profileData.token
-
-                        self.navigationController?.pushViewController(homeController, animated: true)
-                        
-
+                        self.performSegue(withIdentifier: "homeSegue", sender: nil)
                         
                     } catch {
                         let alert = UIAlertController(title: "Error", message: "Don't have any Data", preferredStyle: .alert)
