@@ -65,6 +65,8 @@ class LoginViewController: UIViewController {
         
         signInButton.addTarget(self, action: #selector(handleSignIn), for: .touchUpInside)
         
+        self.dismissKey()
+        
     }
     
     @objc func changeToSignUp() {
@@ -185,3 +187,15 @@ class LoginViewController: UIViewController {
 }
 
 
+extension UIViewController {
+    func dismissKey() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyBoard))
+        
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyBoard() {
+        view.endEditing(true)
+    }
+}

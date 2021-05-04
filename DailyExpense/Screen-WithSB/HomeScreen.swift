@@ -14,9 +14,6 @@ class HomeScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-//    @IBAction func handleChangePassword(_ sender: Any) {
-//        performSegue(withIdentifier: "changePasswordSegue", sender: self)
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is ChangePasswordScreen {
